@@ -23,8 +23,16 @@ func main() {
 	//CheckPermission()
 	//CopyFile()
 	//WriteBytesToFile()
-	WriteBytesToFileIOUtil()
+	//WriteBytesToFileIOUtil()
+	//DeleteFile()
 
+}
+
+func DeleteFile() {
+	err := os.Remove("./movedFile/test_copy.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func WriteBytesToFileIOUtil() {
