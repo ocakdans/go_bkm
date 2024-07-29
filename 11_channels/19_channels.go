@@ -1,5 +1,15 @@
 package channels
 
+import "fmt"
+
+func main() {
+	s := []int{1, 2, 3, 4, 5, 15}
+	c := make(chan int)
+	go sum(s, c)
+	x := <-c
+	fmt.Println(x)
+}
+
 func GoRoutine(ciftSayiCn chan int) {
 	sum := 0
 	for i := 0; i <= 10; i += 2 {
@@ -16,4 +26,12 @@ func GoRoutine2(tekSayiCn chan int) {
 	}
 
 	tekSayiCn <- sum // atama yapıyoruz...
+}
+
+func sum(s []int, c chan int) {
+	sum := 0
+	for _, v := range s {
+		sum += v
+	}
+	c <- sum
 }

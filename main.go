@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	//structs "golesson/09_structs"
+	others "golesson/18_others"
 )
 
 // errors "golesson/14_error_handling"
@@ -16,7 +16,7 @@ func main() {
 	//fmt.Println(variables.Hello("Chris"))
 	//variables.TypeCasting()
 	//consoleread.ConsoleRead()
-	//others.Times()
+	others.Times()
 	//consoleread.ReadFromConsole()
 	//conditions.WhileInGo()
 	//fmt.Print()
