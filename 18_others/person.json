@@ -1,0 +1,37 @@
+{
+    "ID": 1,
+    "FirstName": "Selim",
+    "LastName": "Ock",
+    "UserName": "ocakdans",
+    "Gender": "male",
+    "Name": {
+        "Family": "Ock",
+        "Personal": "Selim"
+    },
+    "Email": [
+        {
+            "ID": 1,
+            "Kind": "home",
+            "Address": "home@gmail.com"
+        },
+        {
+            "ID": 2,
+            "Kind": "work",
+            "Address": "work@gmail.com"
+        }
+    ],
+    "Interest": [
+        {
+            "ID": 1,
+            "Name": "Golang"
+        },
+        {
+            "ID": 2,
+            "Name": "Docker"
+        },
+        {
+            "ID": 3,
+            "Name": "Kubernetes"
+        }
+    ]
+}
