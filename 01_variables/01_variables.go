@@ -1,11 +1,16 @@
 package variables
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func Variable() {
 	//1. Defining the variables
 	var welcomeMessage string = "Hello World!"
 	fmt.Println(welcomeMessage)
+
+	fmt.Println(reflect.TypeOf(welcomeMessage)) // --> reflect package is used to get the data type of the variable
 
 	var kdv int = 20
 	fmt.Println("in Turkiye, kdv is", kdv)

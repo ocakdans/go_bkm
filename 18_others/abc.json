@@ -1,0 +1,176 @@
+{
+    "_source": {
+      "includes": [
+        "id",
+        "property_id",
+        "title_primary",
+        "title_secondary",
+        "category_id",
+        "pf_location.tree",
+        "pf_location.path_names_primary",
+        "pf_location.path_names_secondary",
+        "agent_id",
+        "broker_id",
+        "reference",
+        "furnished",
+        "smart_ad",
+        "area",
+        "quality_score",
+        "premium",
+        "featured",
+        "price",
+        "price_on_application",
+        "date_insert",
+        "verified",
+        "bedroom_id",
+        "bedroom_value",
+        "bathroom_id",
+        "bathroom_value",
+        "is_frontend",
+        "type_id",
+        "images",
+        "phone_did",
+        "phone",
+        "whatsapp_button_phone",
+        "coordinates",
+        "view_360",
+        "live_viewing_status",
+        "live_viewing_broadcast_id",
+        "live_viewing_start_date",
+        "rera_number",
+        "listing_level",
+        "location_id",
+        "completion_status",
+        "utilities_price_type",
+        "project_id",
+        "is_developer_property",
+        "delivery_date",
+        "installment_years",
+        "property_age",
+        "agent_license_no",
+        "is_price_realistic",
+        "whatsapp_insights",
+        "serp_score",
+        "serp_scores",
+        "amenities",
+        "video_url",
+        "claimed_by_agent",
+        "under_offer_by_competitor",
+        "date_published",
+        "description_primary",
+        "description_secondary",
+        "payment_method",
+        "down_payment_price",
+        "rental_availability_date",
+        "rera_permit_validation_url",
+        "street_direction",
+        "street_width",
+        "has_obligation",
+        "obligation_comment",
+        "is_value_affected",
+        "value_affected_comment",
+        "has_mortgage",
+        "mortgage_comment",
+        "similar_price_transactions",
+        "floor_plans",
+        "plot_width",
+        "plot_length",
+        "service_fee",
+        "verified_by_owner",
+        "dtcm_number",
+        "unit_number",
+        "zone_name_primary",
+        "zone_name_secondary"
+      ]
+    },
+    "from": 0,
+    "query": {
+      "function_score": {
+        "boost_mode": "replace",
+        "score_mode": "sum",
+        "functions": [
+          {
+            "field_value_factor": {
+              "factor": 0.1,
+              "field": "ranking_factors_details.Freshness.primary",
+              "missing": 0,
+              "modifier": "none"
+            }
+          },
+          {
+            "field_value_factor": {
+              "factor": 0.05,
+              "field": "ranking_factors_details.IsSuperAgent.primary",
+              "missing": 0,
+              "modifier": "none"
+            }
+          },
+          {
+            "field_value_factor": {
+              "factor": 0.85,
+              "field": "ranking_factors_details.SuperAgentQualityScoreMultiplier.primary",
+              "missing": 0,
+              "modifier": "none"
+            }
+          },
+          {
+            "field_value_factor": {
+              "factor": 0.03,
+              "field": "ranking_factors_details.IsCaratCustomer.primary",
+              "missing": 0,
+              "modifier": "none"
+            },
+            "filter": {
+              "range": {
+                "quality_score.primary": {
+                  "from": 0.9,
+                  "include_lower": true
+                }
+              }
+            }
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "term": {
+                  "is_frontend": true
+                }
+              },
+              {
+                "term": {
+                  "category_id": 1
+                }
+              },
+              {
+                "term": {
+                  "price.values.price_type_id": 1
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "size": 25,
+    "sort": [
+      {
+        "listing_level_weight": {
+          "order": "desc"
+        }
+      },
+      {
+        "_score": {
+          "order": "desc"
+        }
+      },
+      {
+        "random_adjustment": {
+          "order": "desc"
+        }
+      }
+    ],
+    "track_total_hits": true
+  }
+  

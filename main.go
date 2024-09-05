@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	others "golesson/18_others"
+	variables "golesson/01_variables"
 )
 
 // errors "golesson/14_error_handling"
@@ -12,11 +12,11 @@ import (
 //"golesson/loops"
 
 func main() {
-	//variables.Variable()
+	variables.Variable()
 	//fmt.Println(variables.Hello("Chris"))
 	//variables.TypeCasting()
 	//consoleread.ConsoleRead()
-	others.Times()
+	//others.Times()
 	//consoleread.ReadFromConsole()
 	//conditions.WhileInGo()
 	//fmt.Print()
